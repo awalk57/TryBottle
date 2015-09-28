@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2470636976">
-    <data-source source="LOCAL" name="SQLite -" uuid="5603db70-ea9d-4196-aa90-73d3ad192cd9">
+  <component name="DataSourceManagerImpl" format="xml" hash="1196802704">
+    <data-source source="LOCAL" name="URLDB" uuid="4d818238-8214-4bb2-9f04-054565ebbab0">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/todo.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/urldb.db</jdbc-url>
       <libraries />
     </data-source>
   </component>

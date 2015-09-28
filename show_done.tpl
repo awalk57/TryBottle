@@ -1,5 +1,5 @@
 %#template to generate a HTML table from a list of tuples (or list of lists, or tuple of tuples or ...)
-<p><h3>Your Finished TODO Items:</h3></p>
+<p><h3>Your Finished URLDB Items:</h3></p>
 <table border="1">
 %for row in rows:
   <tr>
