@@ -18,12 +18,13 @@ class URLDB(Base):
     status = Column(Boolean, nullable=False)
 
     #----------------------------------------------------------------------
-    def __init__(self, task, status, urlstr, chk_status):
+    def __init__(self, task, urlstr, chk_status, status):
         """Constructor"""
         self.task = task
-        self.status = status
         self.urlstr = urlstr
         self.chk_status = chk_status
+        self.status = status
+
         
 #----------------------------------------------------------------------
 def main():
@@ -35,10 +36,10 @@ def main():
     session = create_session()
     
     session.add_all([
-        URLDB('State Web Page', 0, 'http://www.state.nj.us', '200'),
-        URLDB('Python Library Blog', 1,'http://www.blog.pythonlibrary.org', ''),
-        URLDB('Bottle Tutorial', 1, 'http://bottlepy.org/docs', ''),
-        URLDB('Norwegian Cruise Lines', 0, 'http://www.ncl.com', '')
+        URLDB('State Web Page', 'http://www.state.nj.us', '200', 0),
+        URLDB('Python Library Blog', 'http://www.blog.pythonlibrary.org', '', 1),
+        URLDB('Bottle Tutorial', 'http://bottlepy.org/docs', '', 1),
+        URLDB('Norwegian Cruise Lines', 'http://www.ncl.com', '', 0)
         ])
     session.commit()
 

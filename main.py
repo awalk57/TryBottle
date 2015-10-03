@@ -49,7 +49,7 @@ class URLDB(Base):
     #----------------------------------------------------------------------
     def __repr__(self):
         """"""
-        return "<URLDB (task: %s, urlstr: %s, checkstatus: %s, status: %s" % (self.task,
+        return "<URLDB (task: %s, urlstr: %s, chk_status: %s, status: %s" % (self.task,
                                                 self.urlstr,
                                                 self.chk_status,
                                                 self.status)
@@ -96,8 +96,8 @@ def new_item():
     """
     if request.GET.get('save', '').strip():
         task = request.GET.get('task', '').strip()
-        urlstr = request.GET.get('urlstr', '')
-        chk_status = request.GET.get('chk_status', '')
+        urlstr = request.GET.get('urlstr', '').strip()
+        chk_status = request.GET.get('chk_status', '').strip()
         status = 1
         
         session = create_session()
