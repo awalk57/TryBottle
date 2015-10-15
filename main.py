@@ -39,12 +39,13 @@ class URLDB(Base):
     status = Column(Boolean, nullable=False)
 
     #----------------------------------------------------------------------
-    def __init__(self, task, status, urlstr, chk_status):
+    def __init__(self, task, urlstr, chk_status, status):
         """Constructor"""
         self.task = task
-        self.status = status
         self.urlstr = urlstr
         self.chk_status = chk_status
+        self.status = status
+
         
     #----------------------------------------------------------------------
     def __repr__(self):
