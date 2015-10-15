@@ -9,7 +9,10 @@ from sqlalchemy.orm import sessionmaker
 # --------------------------------
 # Add SQLAlchemy app
 # --------------------------------
+srvstate = 1
+
 app = Bottle()
+
 
 Base = declarative_base()
 engine = create_engine("sqlite:///urldb.db", echo=True)
@@ -130,12 +133,30 @@ def URLDB_list():
     Show the main page which is the current URLDB list
     """
     session = create_session()
-    result = session.query(URLDB).filter(URLDB.status==1).all()
-    UrlList = [(item.id, item.task) for item in result]
+    result = session.query(URLDB).filter(URLDB.status==1).order_by(URLDB.task).all()
+    UrlList = [(item.id, item.task, item.urlstr) for item in result]
     output = template("make_table", rows=UrlList)
     return output
 
 #----------------------------------------------------------------------
+@route("/status")
+def status():
+    if srvstate:
+        output = template("server_status", status='Running')
+        return output
+    else:
+        output = template("server_status", status='Offline')
+        return output
+
+@route("/control")
+def control():
+    if srvstate:
+        srvstate = 0
+    else:
+        srvstate = 1
+    output = template("server_status")
+    return output
+
 if __name__ == "__main__":
     debug(True)
     run()

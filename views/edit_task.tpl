@@ -3,7 +3,7 @@
 <p>Edit the task with ID = {{no}}</p>
 <form action="/edit/{{no}}" method="get">
 <input type="text" name="task" value="{{old.task}}" size="50" maxlength="50">
-<input type="text" name="urlstr" value="{{old.urlstr}}" size="50" maxlength="50">
+<input type="text" name="urlstr" value="{{old.urlstr}}" size="100" maxlength="100">
 <input type="text" name="chk_status" value="{{old.chk_status}}" size="5" maxlength="5">
 <select name="status">
 <option>open</option>
