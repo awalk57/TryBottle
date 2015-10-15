@@ -124,15 +124,15 @@ def show_done():
     
 #----------------------------------------------------------------------
 @route("/")
-@route("/URLDB")
+@route("/list")
 def URLDB_list():
     """
     Show the main page which is the current URLDB list
     """
     session = create_session()
     result = session.query(URLDB).filter(URLDB.status==1).all()
-    myResultList = [(item.id, item.task) for item in result]
-    output = template("make_table", rows=myResultList)
+    UrlList = [(item.id, item.task) for item in result]
+    output = template("make_table", rows=UrlList)
     return output
 
 #----------------------------------------------------------------------
