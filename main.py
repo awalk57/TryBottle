@@ -1,6 +1,12 @@
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals)
+
 from bottle import Bottle, route, run, debug
 from bottle import redirect, request, template
 from bottle.ext import sqlalchemy
+
+
+from rq import Connection, Queue, Worker
 
 from sqlalchemy import create_engine, Column, Boolean, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
@@ -158,6 +164,11 @@ def control():
     return output
 
 if __name__ == "__main__":
+    with Connection():
+        q = Queue()
+        Worker(q).work()
 
+
+    run_example()
     debug(True)
     run()
